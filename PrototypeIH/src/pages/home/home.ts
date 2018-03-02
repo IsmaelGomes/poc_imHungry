@@ -42,9 +42,9 @@ export class HomePage {
 
     this.addMyMarker(location, map);
     
-    for(var item in this.nearbyLocations){
-      var itemPosition = new google.maps.LatLng(this.nearbyLocations[item].latitude, this.nearbyLocations[item].longitude);
-      this.addMarkers(this.nearbyLocations[item].name, itemPosition, map);
+    for(var i in this.nearbyLocations){
+      var itemPosition = new google.maps.LatLng(this.nearbyLocations[i].latitude, this.nearbyLocations[i].longitude);
+      this.addMarkers(this.nearbyLocations[i].name, itemPosition, map);
     }
   }
 

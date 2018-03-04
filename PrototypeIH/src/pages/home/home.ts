@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Nav } from 'ionic-angular';
+import { FilialDetailPage } from '../filial-detail/filial-detail';
 
 declare var google: any;
 
@@ -10,7 +11,8 @@ declare var google: any;
 export class HomePage {
 
   @ViewChild('map') mapRef: ElementRef;
-  constructor(public navCtrl: NavController) {
+  @ViewChild(Nav) navigation: Nav;
+  constructor(private navCtrl: NavController) {
 
   }
 
@@ -71,11 +73,18 @@ export class HomePage {
   }
 
   addMarkers(title, position, map){
-    return new google.maps.Marker({
+    const m = new google.maps.Marker({
       position: position,
       map: map,
       title: title
     });
+
+    m.addListener('click', this.navigateToFilialPage);
+  }
+
+  navigateToFilialPage(): void{
+    //this.navigation.push(FilialDetailPage);
+    console.log(this.navigation);n
   }
 
 }

@@ -9,6 +9,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { AboutPage } from '../pages/about/about';
+import { FilialDetailPage } from '../pages/filial-detail/filial-detail';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AboutPage } from '../pages/about/about';
     TabsPage,
     ContactPage,
     HomePage,
-    AboutPage
+    AboutPage,
+    FilialDetailPage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { AboutPage } from '../pages/about/about';
     TabsPage,
     ContactPage,
     HomePage,
-    AboutPage
+    AboutPage,
+    FilialDetailPage
   ],
   providers: [
     StatusBar,

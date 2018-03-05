@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, Nav } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 import { FilialDetailPage } from '../filial-detail/filial-detail';
 
 declare var google: any;
@@ -11,8 +11,8 @@ declare var google: any;
 export class HomePage {
 
   @ViewChild('map') mapRef: ElementRef;
-  @ViewChild(Nav) navigation: Nav;
-  constructor(private navCtrl: NavController) {
+
+  constructor(private navCtrl: NavController, private modalCtrl: ModalController) {
 
   }
 
@@ -25,6 +25,8 @@ export class HomePage {
     {name: 'Big Boorguer', latitude: -8.026914, longitude: -34.883174},
     {name: 'Mago e Will Doces e Salgados', latitude: -8.027344, longitude: -34.879940}
   ]
+
+  markers = []
 
   ionViewDidLoad(){
     this.loadMap();
@@ -48,6 +50,8 @@ export class HomePage {
       var itemPosition = new google.maps.LatLng(this.nearbyLocations[i].latitude, this.nearbyLocations[i].longitude);
       this.addMarkers(this.nearbyLocations[i].name, itemPosition, map);
     }
+
+    this.navigateToFilialPage();
   }
 
   addMyMarker(position, map){
@@ -79,12 +83,22 @@ export class HomePage {
       title: title
     });
 
-    m.addListener('click', this.navigateToFilialPage);
+    this.markers.push(m);
+    return m;
   }
 
   navigateToFilialPage(): void{
-    //this.navigation.push(FilialDetailPage);
-    console.log(this.navigation);n
-  }
+   
+    console.log(this.markers);
+    console.log(this.navCtrl);
 
+    for(var i in this.markers){
+      google.maps.event.addListener(this.markers[i], 'click', ()=>{
+        //this.navCtrl.push(FilialDetailPage);
+        let modal = this.modalCtrl.create(FilialDetailPage);
+        modal.present();
+      });
+    }
+
+  }
 }

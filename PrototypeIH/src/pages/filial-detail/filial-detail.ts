@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 
@@ -11,7 +11,7 @@ export class FilialDetailPage {
 
   viewType : string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private detector: ChangeDetectorRef) {
     this.viewType = 'menu';
   }
 
@@ -20,7 +20,8 @@ export class FilialDetailPage {
   }
 
   segmentChanged(){
-    console.log(this.viewType);  
+    console.log(this.viewType);
+    this.detector.detectChanges();  
   }
 
   goBack(): void{

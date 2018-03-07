@@ -18,7 +18,7 @@
       </ion-item>
     </ion-list>
     <div padding>
-      <button ion-button> Cadastrar</button>
+      <button ion-button (click)="chamarCadastro()"> Cadastrar</button>      
       <button ion-button *ngIf="!autenticacao" (click)="login()"> Login</button>
     </div>
   </ion-content>

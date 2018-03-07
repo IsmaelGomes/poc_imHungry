@@ -11,6 +11,9 @@ import { HomePage } from '../pages/home/home';
 import { AboutPage } from '../pages/about/about';
 import { FilialDetailPage } from '../pages/filial-detail/filial-detail';
 import { LoginPageModule } from '../pages/login/login.module';
+import { ArrayUserGlobalProvider } from '../providers/array-user-global/array-user-global';
+import { CadastroPage } from '../pages/cadastro/cadastro';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +22,8 @@ import { LoginPageModule } from '../pages/login/login.module';
     ContactPage,
     HomePage,
     AboutPage,
-    FilialDetailPage
+    FilialDetailPage,
+    CadastroPage
   ],
   imports: [
     BrowserModule,
@@ -33,12 +37,14 @@ import { LoginPageModule } from '../pages/login/login.module';
     ContactPage,
     HomePage,
     AboutPage,
-    FilialDetailPage
+    FilialDetailPage,
+    CadastroPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ArrayUserGlobalProvider
   ]
 })
 export class AppModule {}

@@ -13,6 +13,7 @@ import { FilialDetailPage } from '../pages/filial-detail/filial-detail';
 import { LoginPageModule } from '../pages/login/login.module';
 import { ArrayUserGlobalProvider } from '../providers/array-user-global/array-user-global';
 import { CadastroPage } from '../pages/cadastro/cadastro';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ArrayUserGlobalProvider
+    ArrayUserGlobalProvider,
+    LocalNotifications
   ]
 })
 export class AppModule {}

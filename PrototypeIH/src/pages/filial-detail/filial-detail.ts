@@ -1,6 +1,6 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 @IonicPage()
 @Component({
@@ -33,10 +33,12 @@ export class FilialDetailPage {
   cartData = [
     ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private detector: ChangeDetectorRef) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private detector: ChangeDetectorRef,
+  private localNotf: LocalNotifications, private platform: Platform) {
     this.viewType = 'menu';
     this.isMenu = true;
   }
+
 
   ionViewDidLoad() {
     
@@ -64,6 +66,17 @@ export class FilialDetailPage {
     this.cartData = [];
     this.detector.detectChanges();
     alert('Compra Realizada Com Sucesso. Aguarde a confirmação do pedido.');
+
+    //Criar Notificação (Apenas Testar No Emulador ou Dispositivo Real)
+    const isAndroid = this.platform.is('android');
+    this.localNotf.schedule({
+      title: 'Seu pedido no Bobs da Vida está pronto!',
+      text: 'Pedido nº 123123 já pode ser retirado no balcão',
+      sound: isAndroid ? 'file://sound.mp3': 'file://beep.caf',
+      at: new Date(new Date().getTime() + 7200)
+
+    });
+
   }
 
   addToCart(menuitem: any): void{

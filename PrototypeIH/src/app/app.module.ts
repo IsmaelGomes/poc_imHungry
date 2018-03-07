@@ -13,6 +13,7 @@ import { FilialDetailPage } from '../pages/filial-detail/filial-detail';
 import { LoginPageModule } from '../pages/login/login.module';
 import { ArrayUserGlobalProvider } from '../providers/array-user-global/array-user-global';
 import { CadastroPage } from '../pages/cadastro/cadastro';
+import { EstablisPage } from '../pages/establis/establis';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
@@ -24,7 +25,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     HomePage,
     AboutPage,
     FilialDetailPage,
-    CadastroPage
+    CadastroPage,
+    EstablisPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     HomePage,
     AboutPage,
     FilialDetailPage,
-    CadastroPage
+    CadastroPage,
+    EstablisPage
   ],
   providers: [
     StatusBar,

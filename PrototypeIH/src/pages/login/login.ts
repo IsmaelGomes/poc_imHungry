@@ -29,7 +29,7 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  login() {
+  login(): void {
 
     const validaLogin = this.singleton.arrayRetorno.find(x => x.email == this.email);
     if (typeof validaLogin === "undefined") {

@@ -7,17 +7,67 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content>
-    <ion-segment [(ngModel)]="viewType" color="primary" padding (ionChange)="segmentChanged()">
-        <ion-segment-button value="menu">
-          Menu
-        </ion-segment-button>
-        <ion-segment-button value="cart">
-          Carrinho
-        </ion-segment-button>
-    </ion-segment>
+<ion-content (ionScroll)="onScroll()">
+  <ion-segment [(ngModel)]="viewType" color="primary" padding (ionChange)="segmentChanged()">
+    <ion-segment-button value="menu">
+      Menu
+    </ion-segment-button>
+    <ion-segment-button value="cart">
+      Carrinho
+    </ion-segment-button>
+  </ion-segment>
+  <div *ngIf="viewType=='menu'" class="blue" id="menuList">
+    <ion-searchbar placeholder="Procurar por nome" (ionInput)="filterItems()"></ion-searchbar>
+    <ion-list>
+      <ion-item no-lines *ngFor="let item of menuData">
+        <ion-card>
+          <div class="col">
+            <ion-img width="150" height="150" src={{item.image}} ></ion-img>
+          </div>
+          <div class="col">
+            <div class="itemTitle" margin-bottom>{{item.name}}</div>
+              <div text-wrap class="itemDescription">{{item.description}}</div>
+              <div>
+                <div class="itemPrice">{{item.price}}</div>
+                <button ion-button icon-only (click)="addToCart(item)">
+                  <ion-icon name="cart"></ion-icon>
+                </button>
+              </div>
+            </div>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="viewType=='cart'" class="green" id="cartList">
+    <div padding-horizontal>
+      <button *ngIf="canFinalize()" ion-button block (click)="finalizarCompra()">Finalizar Compra</button>
+    </div>
+    <ion-list>
+      <ion-item no-lines *ngFor="let item of cartData">
+        <ion-card>
+          <div class="col">
+            <ion-img width="150" height="150" src={{item.image}} ></ion-img>
+          </div>
+          <div class="col">
+            <div class="itemTitle" margin-bottom>{{item.name}}</div>
+            <div text-wrap class="itemDescription">{{item.description}}</div>
+            <div>
+              <div class="itemPrice">{{item.price}}</div>
+              <div>
+                <div class="col">
+                  <button ion-button icon-only round color="danger" (click)="removeFromCart(item)">
+                    <ion-icon name="close"></ion-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>

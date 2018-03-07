@@ -1,3 +1,38 @@
 page-filial-detail {
+    .hide{
+        display: none;
+    }
 
+    .green{
+        //background-color: darkolivegreen;
+        height: 100%;
+        width: 100%;
+    }
+
+    .blue{
+        //background-color: darkblue;
+        height: 100%;
+        width: 100%;
+    }
+
+    .col{
+        float: left;
+        width: 50%;
+    }
+
+    .itemTitle{
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .itemDescription{
+        color: #a7a7a7;
+    }
+
+    .itemPrice{
+        font-size: 25px;
+        float: left;
+        width: 50%;
+        color: #ff7f50;
+    }
 }
